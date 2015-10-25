@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Welcome to simpleData.io please login to view data</h1>
+	<form name="loginForm" method="post">
+		User Name: <br>
+		<input type="text" name="userName"><br>
+		Password: <br>
+		<input type="password" name="password"><br>
+		<input type="submit" value="submit">
+	</form>
+	{% if error %}
+		<p>{{error}}</p>
+	{% endif %}
+{% endblock %}
