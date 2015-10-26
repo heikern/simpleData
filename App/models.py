@@ -17,10 +17,9 @@ class adminUsers(db.Model):
 	def __repr__(self):
 		return "<{}>".format(self.userName)
 
+class sensorData(db.Model):
 
-class tempSensorData(db.Model):
-
-	__tablename__ = "sensor data log"
+	__tablename__ = "sensordatalog"
 
 	id = db.Column(db.Integer, primary_key=True)
 	value = db.Column(db.Integer,nullable=False)

@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>Still not done yet</h1>
+	{% for databit in data %}
+		<p>{{databit.value}}</p>
+	{% endfor %}
 	<form name='logout' method='post'>
 		<input type="submit" value="logout">
 	</form>

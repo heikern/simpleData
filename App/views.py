@@ -1,6 +1,6 @@
 from App import dataApp, db
 from flask import render_template, request, redirect, session
-from models import adminUsers
+from models import adminUsers, sensorData
 from functools import wraps
 
 
@@ -48,10 +48,12 @@ def logoutPage():
 @dataApp.route('/data', methods=['GET', 'POST'])
 @login_required
 def dataPage():
+	data = db.session.query(sensorData).all()
 	if request.method == "POST":
 		session.pop('logged_in',None)
 		return redirect('/')
-	return render_template("data.html")
+	return render_template("data.html",
+							data = data)
 
 
 
