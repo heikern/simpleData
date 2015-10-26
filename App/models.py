@@ -1,5 +1,6 @@
 from App import db
 
+
 class adminUsers(db.Model):
 
 	__tablename__ = "ListOfAdminUsers"
@@ -15,3 +16,17 @@ class adminUsers(db.Model):
 
 	def __repr__(self):
 		return "<{}>".format(self.userName)
+
+
+class tempSensorData(db.Model):
+
+	__tablename__ = "sensor data log"
+
+	id = db.Column(db.Integer, primary_key=True)
+	value = db.Column(db.Integer,nullable=False)
+
+	def __init__(self, val):
+		self.value = val
+
+	def __repr__(self):
+		return "temperature sensor {}".format(self.val)

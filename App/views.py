@@ -34,8 +34,10 @@ def loginPage():
 			print "database: ",user.password, "keyedIn", enteredPassword
 			if user.userName == enteredUserName and user.password == enteredPassword:
 				session['logged_in']=True
+				print session['logged_in']
 				return redirect('/data')
 		error = "invalid credentials"
+		session.pop('logged_in',None)
 	return render_template('login.html',
 							error=error)
 
@@ -43,10 +45,13 @@ def loginPage():
 def logoutPage():
 	pass
 
-@dataApp.route('/data')
+@dataApp.route('/data', methods=['GET', 'POST'])
 @login_required
 def dataPage():
-	return "ops I am not done yet"
+	if request.method == "POST":
+		session.pop('logged_in',None)
+		return redirect('/')
+	return render_template("data.html")
 
 
 
