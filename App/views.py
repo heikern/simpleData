@@ -25,21 +25,24 @@ def home():
 def loginPage():
 	#check that person logging in has the permission to view data
 	error = None
-	if request.method == "POST":
-		enteredUserName = request.form['userName']
-		enteredPassword = request.form['password']
-		check = db.session.query(adminUsers).all()
-		for user in check:
-			#print "database: ",user.userName, "keyedIn", enteredUserName 
-			#print "database: ",user.password, "keyedIn", enteredPassword
-			if user.userName == enteredUserName and user.password == enteredPassword:
-				session['logged_in']=True
-				#print session['logged_in']
-				return redirect('/data')
-		error = "invalid credentials"
-		session.pop('logged_in',None)
-	return render_template('login.html',
-							error=error)
+	try:
+		if request.method == "POST":
+			enteredUserName = request.form['userName']
+			enteredPassword = request.form['password']
+			check = db.session.query(adminUsers).all()
+			for user in check:
+				#print "database: ",user.userName, "keyedIn", enteredUserName 
+				#print "database: ",user.password, "keyedIn", enteredPassword
+				if user.userName == enteredUserName and user.password == enteredPassword:
+					session['logged_in']=True
+					#print session['logged_in']
+					return redirect('/data')
+			error = "invalid credentials"
+			session.pop('logged_in',None)
+		return render_template('login.html',
+								error=error)
+	except:
+		return redirect('/')
 
 @dataApp.route('/logout')
 def logoutPage():
