@@ -30,11 +30,11 @@ def loginPage():
 		enteredPassword = request.form['password']
 		check = db.session.query(adminUsers).all()
 		for user in check:
-			print "database: ",user.userName, "keyedIn", enteredUserName 
-			print "database: ",user.password, "keyedIn", enteredPassword
+			#print "database: ",user.userName, "keyedIn", enteredUserName 
+			#print "database: ",user.password, "keyedIn", enteredPassword
 			if user.userName == enteredUserName and user.password == enteredPassword:
 				session['logged_in']=True
-				print session['logged_in']
+				#print session['logged_in']
 				return redirect('/data')
 		error = "invalid credentials"
 		session.pop('logged_in',None)
