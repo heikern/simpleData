@@ -1,0 +1,5 @@
+flask
+flaskMac
+flaskUbuntu
+*.pyc
+*.db
