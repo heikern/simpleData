@@ -44,17 +44,20 @@ def loginPage():
 	except:
 		return redirect('/')
 
-@dataApp.route('/logout')
+@dataApp.route('/logout', methods=['GET','POST'])
+@login_required
 def logoutPage():
-	pass
+	print request.data
+	if request.method == 'GET':
+		session.pop('logged_in',None)
+	return render_template("logout.html")
 
 @dataApp.route('/data', methods=['GET', 'POST'])
 @login_required
 def dataPage():
 	data = db.session.query(sensorData).all()
 	if request.method == "POST":
-		session.pop('logged_in',None)
-		return redirect('/')
+		return redirect('/logout')
 	return render_template("data.html",
 							data = data)
 
