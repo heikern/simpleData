@@ -6,7 +6,6 @@ from functools import wraps
 
 # create decorator to ensure only logged in 
 # personal can view data
-
 def login_required(func):
 	@wraps(func)
 	def loginCheck(*args,**kwargs):
@@ -20,6 +19,7 @@ def login_required(func):
 @dataApp.route('/')
 def home():
 	return render_template('home.html')
+	
 
 @dataApp.route('/login', methods=["GET","POST"])
 def loginPage():
