@@ -10,5 +10,5 @@ class BaseConfig():
 class DevelopmentConfig(BaseConfig):
 	DEBUG = True
 
-class ProductingConfig(BaseConfig):
+class ProductionConfig(BaseConfig):
 	DEBUG = False
