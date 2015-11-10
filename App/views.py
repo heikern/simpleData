@@ -19,7 +19,6 @@ def login_required(func):
 @dataApp.route('/')
 def home():
 	return render_template('home.html')
-	
 
 @dataApp.route('/login', methods=["GET","POST"])
 def loginPage():

@@ -11,8 +11,7 @@ class adminUsers(db.Model):
 
 	def __init__(self, userName, password):
 		self.userName = userName
-		self.password = password 
-
+		self.password = password
 
 	def __repr__(self):
 		return "<{}>".format(self.userName)
